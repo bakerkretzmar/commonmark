@@ -58,11 +58,13 @@ final class HeadingPermalinkProcessor implements ConfigurationAwareInterface
     {
         $this->useNormalizerFromConfigurationIfProvided();
 
+        $levels = $this->config->get('heading_permalink/levels', [1, 2, 3, 4, 5, 6]);
+
         $walker = $e->getDocument()->walker();
 
         while ($event = $walker->next()) {
             $node = $event->getNode();
-            if ($node instanceof Heading && $event->isEntering()) {
+            if ($node instanceof Heading && $event->isEntering() && \in_array($node->getLevel(), $levels, true)) {
                 $this->addHeadingLink($node);
             }
         }

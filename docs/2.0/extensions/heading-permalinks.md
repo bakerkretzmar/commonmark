@@ -45,6 +45,7 @@ $config = [
         'html_class' => 'heading-permalink',
         'id_prefix' => 'user-content',
         'insert' => 'before',
+        'levels' => [1, 2, 3, 4, 5, 6],
         'title' => 'Permalink',
         'symbol' => HeadingPermalinkRenderer::DEFAULT_SYMBOL,
         'slug_normalizer' => new SlugNormalizer(),
@@ -71,6 +72,10 @@ This should be a `string` you want prepended to HTML IDs.  This prevents generat
 ### `insert`
 
 This controls whether the anchor is added to the beginning of the `<h1>`, `<h2>` etc. tag or to the end.  Can be set to either `'before'` or `'after'`.
+
+### `levels`
+
+This controls which heading levels should get permalinks.  For example, if you only want links for `<h1>`, `<h2>`, and `<h3>` tags, you can set this option to `[1, 2, 3]`.
 
 ### `symbol`
 
