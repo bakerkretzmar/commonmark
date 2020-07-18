@@ -32,9 +32,9 @@
         "michelf/php-markdown": "~1.4",
         "mikehaertl/php-shellcommand": "^1.4",
         "phpstan/phpstan": "^0.12",
-        "phpunit/phpunit": "^7.5",
         "scrutinizer/ocular": "^1.5",
-        "symfony/finder": "^4.2"
+        "symfony/finder": "^4.2",
+        "symfony/phpunit-bridge": "^5.1"
     },
     "conflict": {
         "scrutinizer/ocular": "1.7.*"
@@ -77,7 +77,7 @@
     "bin": ["bin/commonmark"],
     "scripts": {
         "phpstan": "phpstan analyse",
-        "phpunit": "phpunit --no-coverage",
+        "phpunit": "simple-phpunit --no-coverage",
         "test": [
             "@phpstan",
             "@phpunit"

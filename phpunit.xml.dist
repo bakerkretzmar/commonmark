@@ -9,6 +9,9 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+    <php>
+        <env name="SYMFONY_PHPUNIT_REMOVE_RETURN_TYPEHINT" value="1" />
+    </php>
     <testsuites>
         <testsuite name="league/commonmark Test Suite">
             <directory>tests</directory>
