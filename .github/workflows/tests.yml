@@ -30,6 +30,20 @@ jobs:
 
             - run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+            - name: "Choose PHPUnit version"
+              run: |
+                if [ "${{ matrix.php }}" = "7.1" ]; then
+                  echo "::set-env name=SYMFONY_PHPUNIT_VERSION::7.5";
+                elif [ "${{ matrix.php }}" = "8.0" ]; then
+                  echo "::set-env name=SYMFONY_PHPUNIT_VERSION::9.3";
+                else
+                  echo "::set-env name=SYMFONY_PHPUNIT_VERSION::8.3";
+                fi
+
+            - name: "Require latest PHPUnit Bridge for PHP 8"
+              if: "matrix.php == '8.0'"
+              run: composer require --no-update --dev symfony/phpunit-bridge:5.1.*@dev
+
             - run: composer update --no-progress ${{ matrix.composer-flags }}
 
             - run: vendor/bin/simple-phpunit --no-coverage

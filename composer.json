@@ -36,6 +36,8 @@
         "symfony/finder": "^4.2",
         "symfony/phpunit-bridge": "^5.1"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "conflict": {
         "scrutinizer/ocular": "1.7.*"
     },
